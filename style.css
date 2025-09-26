@@ -1,0 +1,248 @@
+/* Add your CSS here */
+
+:root {
+    /* central header height variable so it can be changed in one place */
+    --header-height: 200px;
+}
+
+.hero {
+
+
+    width: 100%;
+}
+
+header {
+    position: fixed;
+    /* already present — keep fixed positioning */
+    top: 0;
+    /* stick to the top */
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: var(--header-height);
+    /* fixed height so we can offset page content below it */
+    z-index: 1000;
+    display: flex;
+    /* center hero content vertically */
+    align-items: center;
+    /* vertical centering inside header */
+    justify-content: center;
+    /* horizontal centering */
+    overflow: hidden;
+    /* prevent hero content from spilling out */
+    padding: 8px 16px;
+    background: rgb(0, 104, 181);
+
+}
+
+/* Ensure page content sits below the fixed header */
+body {
+    margin: 0;
+    padding-top: var(--header-height);
+    /* same as header height */
+}
+
+
+.hero * {
+
+    margin: auto;
+    display: block;
+    width: 50%;
+    text-align: center;
+    font: "intel-clear";
+}
+
+.hero img {
+    /* make the header logo constrained so it doesn't force layout issues */
+    max-width: 120px;
+    height: auto;
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+p {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    justify-content: center;
+}
+
+.timeline .card-text {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    /* vertical centering */
+    justify-content: center;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    /* At the bottom. Use top:0 to append it to the top */
+    background: rgb(0, 104, 181);
+    opacity: 0;
+    /* Black background with 0.5 opacity */
+    color: #f1f1f1;
+    /* Grey text */
+    width: 100%;
+    height: 100%;
+    /* Full width */
+}
+
+.card-image {
+    position: relative;
+    max-width: 70%;
+    box-shadow: 5px 5px 5px rgb(172, 170, 170, 0.7);
+    display: block;
+    width: auto;
+
+}
+
+.card-image:hover .card-text {
+    opacity: .75;
+    transition: opacity 0.5s ease;
+
+}
+
+
+.card-image:hover {
+    transform: scale(1.02);
+    transition: transform 0.5 ease;
+    box-shadow: 8px 8px 6px rgb(172, 170, 170, 0.4);
+    transition: box-shadow 0.3s ease;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    width: 100%;
+    /* each card fills the remaining viewport so only one is fully visible at a time */
+    min-height: calc(100vh - var(--header-height));
+    box-sizing: border-box;
+    padding: 16px;
+    /* space inside the card for text */
+    max-width: none;
+}
+
+.timeline img {
+    display: block;
+    width: 100%;
+    height: auto;
+    /* let the image height flow naturally */
+    object-fit: cover;
+    margin-top: 0;
+    max-height: calc(100vh - var(--header-height) - 120px);
+    margin-top: 0;
+    /* remove the large top gap so images start higher */
+}
+
+h2,
+h3 {
+    align-content: center;
+}
+
+h3 {
+    margin-top: 0;
+}
+
+h2 {
+    margin-bottom: 0;
+}
+
+.timeline {
+    /* Mobile-first: stacked vertical timeline (one card per view) */
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-height: 100vh;
+    padding-top: 20px;
+    /* vertical scroll snapping */
+    scroll-snap-type: y mandatory;
+    /* make the timeline a dedicated scroll container with a fixed height
+         so each card can snap into view cleanly beneath the fixed header */
+    height: calc(100vh - var(--header-height));
+    /* viewport minus header */
+    scroll-behavior: smooth;
+}
+
+/* Larger screens: show timeline horizontally with horizontal scroll */
+@media (min-width: 900px) {
+    .timeline {
+        flex-direction: row;
+        /* center slides vertically within the available area */
+        align-items: center;
+        gap: 20px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-top: 0;
+        /* body padding already offsets the header */
+        /* make timeline occupy the same vertical space as the viewport area
+           beneath the header so horizontal slides align vertically */
+        height: calc(100vh - var(--header-height));
+        min-height: auto;
+        /* horizontal scroll snapping */
+        scroll-snap-type: x mandatory;
+    }
+
+    /* Cards become horizontal items with fixed-ish width on larger screens */
+    .card {
+        /* make cards wider on desktop: occupy ~70% of viewport or up to 900px */
+        flex: 0 0 70vw;
+        width: 70vw;
+        max-width: 900px;
+        margin: 0 5vw;
+        height: calc(100vh - var(--header-height));
+        min-height: 0;
+        padding: 24px;
+        box-sizing: border-box;
+    }
+
+    /* Limit image heights in horizontal layout so cards remain compact */
+    .timeline img {
+        max-height: 220px;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+/* Make each card a snap point in both layouts */
+.card {
+    scroll-snap-align: start;
+    /* make sure snapped cards appear below the fixed header on vertical snaps */
+    scroll-margin-top: 12px;
+    /* make each card a non-flexing snap item that fills the snap viewport */
+    flex: 0 0 auto;
+    height: calc(100vh - 200px);
+    scroll-snap-stop: always;
+}
+
+.footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    z-index: 1000;
+
+}
+
+/* Utility: stretch the footer from a calculated top down to the viewport bottom.
+   Use by adding the `fill-to-bottom` class to the footer element. A small
+   script can set --footer-top to the element's computed top in pixels. */
+.footer.fill-to-bottom {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* If JS sets --footer-top, use it; otherwise allow auto height */
+    top: var(--footer-top, auto);
+    height: auto;
+    min-height: 0;
+}

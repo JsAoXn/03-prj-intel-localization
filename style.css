@@ -171,6 +171,11 @@ h2 {
     scroll-behavior: smooth;
 }
 
+/* Reverse timeline order in RTL mode */
+.timeline.rtl {
+    flex-direction: column-reverse;
+}
+
 /* Larger screens: show timeline horizontally with horizontal scroll */
 @media (min-width: 900px) {
     .timeline {
@@ -188,6 +193,14 @@ h2 {
         min-height: auto;
         /* horizontal scroll snapping */
         scroll-snap-type: x mandatory;
+    }
+    .timeline.rtl {
+        flex-direction: row-reverse;
+        direction: rtl;
+    }
+    .timeline.rtl .card {
+        direction: rtl;
+        text-align: right;
     }
 
     /* Cards become horizontal items with fixed-ish width on larger screens */

@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Intel: Sustainability Through the Ages</title>
+  <!-- Bootstrap CSS (LTR by default) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap RTL CSS (loaded for RTL, toggled by JS) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <!-- Direction switcher JS -->
+  <script src="lang-direction.js" defer></script>
 </head>
 <body>
 
   <!-- Header / Hero Section -->
-  <header>
-    <div class="hero">
-      <!-- Ask Copilot to teach you about `.svg`. 🙂 You'll need to resize the logo with CSS. -->
-      <img src="img/intel-header-logo.svg" alt="Intel Logo" />
-      <!-- Main Heading -->
-      <h1>
-        Sustainability Through the Ages
-      </h1>
-
-      <!-- Subheading / Description -->
-      <p>
-        Explore Intel's journey through time, discovering how our commitment
-        to innovation has shaped a more sustainable future for technology 
-        and our planet.
-      </p>
+  <header class="container-fluid">
+    <div class="hero row justify-content-center align-items-center">
+      <img src="img/intel-header-logo.svg" alt="Intel Logo" class="col-12 col-md-2" />
+      <h1 class="col-12 col-md-8">Sustainability Through the Ages</h1>
+      <p class="col-12">Explore Intel's journey through time, discovering how our commitment to innovation has shaped a more sustainable future for technology and our planet.</p>
     </div>
   </header>
 
@@ -177,56 +175,149 @@
 
   </section>
 
+
   <!-- 3-Column Content Section -->
-  <section>
-    <div>
-      
-      <!-- Column 1 -->
-      <div>
-        <h2>RISE Strategy</h2>
-        <p>
-          Under its RISE (Responsible, Inclusive, Sustainable, Enabling) strategy, 
-          Intel sets ambitious 2030 goals, including driving industry-wide 
-          progress on climate action, water stewardship, and waste reduction.
-        </p>
-        <!-- Learn More Button -->
-        <a href="#">Learn More</a>
+  <!-- Responsive Three-Column Section (Bootstrap Grid) -->
+  <!-- Interactive Accordion Section -->
+  <section class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-10">
+        <div class="accordion" id="sustainabilityAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                What is Intel’s RISE Strategy?
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#sustainabilityAccordion">
+              <div class="accordion-body">
+                Intel’s RISE (Responsible, Inclusive, Sustainable, Enabling) strategy sets ambitious goals for 2030, focusing on climate action, water stewardship, and waste reduction.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                How does Intel support sustainability?
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#sustainabilityAccordion">
+              <div class="accordion-body">
+                Intel invests in renewable energy, water conservation, and waste reduction, and collaborates with communities to restore watersheds and advance a circular economy.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                How can I get involved?
+              </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#sustainabilityAccordion">
+              <div class="accordion-body">
+                Subscribe to our newsletter, participate in local sustainability initiatives, and learn more about Intel’s environmental commitments.
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <!-- Column 2 -->
-      <div>
-        <h2>Commitment</h2>
-        <p>
-          In 2022, Intel pledged to achieve net-zero greenhouse gas emissions 
-          (Scope 1 and 2) by 2040. This commitment builds on decades of 
-          environmental initiatives and partnerships across the semiconductor 
-          industry.
-        </p>
-        <!-- Learn More Button -->
-        <a href="#">Learn More</a>
+    </div>
+  </section>
+  <!-- Updated three-column section -->
+  <section id="three-columns">
+    <div class="container">
+      <!-- Added g-4 for spacing between cards -->
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <!-- Added w-100 to card to ensure it fills its column -->
+          <div class="card w-100 h-100 shadow-sm">
+            <div class="card-body h-100 d-flex flex-column justify-content-between">
+              <h2 class="card-title">
+                <i class="bi bi-bar-chart-fill me-2"></i>RISE Strategy
+              </h2>
+              <p class="card-text">Intel’s RISE strategy sets bold goals for 2030, focusing on responsibility, inclusion, sustainability, and enabling progress across the tech industry.</p>
+              <a href="#" class="btn btn-outline-primary d-inline-flex align-items-center mt-2">
+                <span>Learn More</span>
+                <i class="bi bi-arrow-right ms-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 shadow-sm overflow-hidden">
+            <div class="card-body">
+              <h2 class="card-title">
+                <i class="bi bi-shield-check me-2"></i>Commitment
+              </h2>
+              <p class="card-text">Intel is committed to reaching net-zero greenhouse gas emissions by 2040, building on years of environmental action and industry collaboration.</p>
+              <a href="#" class="btn btn-outline-primary d-inline-flex align-items-center mt-2">
+                <span>Learn More</span>
+                <i class="bi bi-arrow-right ms-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card w-100 h-100 shadow-sm">
+            <div class="card-body">
+              <h2 class="card-title">
+                <i class="bi bi-droplet-half me-2"></i>Water &amp; Waste
+              </h2>
+              <p class="card-text">Intel saves water, restores local watersheds, and recycles materials to reduce waste and support a circular economy.</p>
+              <a href="#" class="btn btn-outline-primary d-inline-flex align-items-center mt-2">
+                <span>Learn More</span>
+                <i class="bi bi-arrow-right ms-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <!-- Column 3 -->
-      <div>
-        <h2>Water &amp; Waste</h2>
-        <p>
-          Intel conserves billions of gallons of water annually and 
-          collaborates with local communities to restore watersheds.
-          Intel also upcycles and recycles materials to reduce waste and 
-          advance a circular economy.
-        </p>
-        <!-- Learn More Button -->
-        <a href="#">Learn More</a>
-      </div>
-
     </div>
   </section>
 
   <!-- Subscription Form -->
-  <section>
-    <h2>Subscribe to our Newsletter</h2>
-    <!-- Add form here -->
+  <section class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h2 class="card-title mb-4 text-center">
+              <i class="bi bi-envelope-paper me-2"></i>Subscribe to our Newsletter
+            </h2>
+            <form>
+              <div class="mb-3">
+                <label for="subscriberName" class="form-label">Name</label>
+                <input type="text" class="form-control" id="subscriberName" placeholder="Your Name" required>
+              </div>
+              <div class="mb-3">
+                <label for="subscriberEmail" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="subscriberEmail" placeholder="name@example.com" required>
+              </div>
+              <button type="submit" class="btn btn-primary w-100 d-flex justify-content-center align-items-center">
+                <span>Subscribe</span>
+                <i class="bi bi-arrow-right ms-2"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
-  <p class="footer">Scroll to view timeline | Hover over cards to learn more!</p>
+  <footer class="footer container-fluid">
+    <div class="container py-3">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-6 text-center text-md-start mb-2 mb-md-0">
+          &copy; 2025 Intel Corporation
+        </div>
+        <div class="col-12 col-md-6 text-center text-md-end">
+          <a href="#" class="mx-2 text-decoration-none">Privacy Policy</a>
+          <a href="#" class="mx-2 text-decoration-none">Terms of Use</a>
+          <a href="#" class="mx-2 text-decoration-none">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
